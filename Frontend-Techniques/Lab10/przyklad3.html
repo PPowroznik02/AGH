@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 3</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="przyklad3.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#open').click(function(){
+                    $('#login form').slideToggle(300);
+                    $(this).toggleClass('close');
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="login">
+        <p id="open">Formularz logowanie</p>
+        <form>
+            <p>
+                <label for="username">Użytkownik: </label>
+                <input type="text" name="username" id="username">
+            </p>
+            <p>
+                <label for="password">Hasło: </label>
+                <input type="text" name="password" id="password">
+            </p>
+            <p>
+                <input type="submit" name="button" id="button" value="Loguj">
+            </p>
+        </form>
+        </div>
+    </body>
+</html>

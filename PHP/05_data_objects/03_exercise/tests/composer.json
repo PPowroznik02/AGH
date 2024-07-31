@@ -1,0 +1,25 @@
+{
+    "name": "ddgg/tests",
+    "description": "Tests",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Damian Gwiżdż",
+            "email": "damian.gwizdz@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "codeception/codeception": "^5.1",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-phpbrowser": "^3.0",
+        "codeception/module-filesystem": "^3.0",
+        "codeception/module-db": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "../project/src"
+        }
+    }
+}

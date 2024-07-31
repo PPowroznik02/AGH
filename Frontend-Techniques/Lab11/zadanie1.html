@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zadanie 1</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+        <style>
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: blueviolet;
+                border: 1px black solid;
+                position: relative;
+                top: 25px;
+                left: 25px;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function(){
+                $("#move").click(function(){
+                    $('div').animate({
+                        top: '+=50',
+                        height: '+=50',
+                        width: '+=50'
+                    },
+                    1
+                    );
+                });
+
+                $("#reset").click(function(){
+                    $('div').css({
+                        "width": "100",
+                        "height": "100",
+                        "top": "25px",
+                        "left": "25px"
+                    });
+                });
+            });
+        </script>
+    
+    </head>
+
+    <body>
+        <button id="move">Naziśnij, żeby aimować element</button>
+        <button id="reset">Naciśnij, żeby zrestartować</button>
+        <div></div>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+:root{
+    --img-opacity: 92%;
+}
+
+body{
+    background-color:rgb(183, 188, 185);
+}
+
+
+.main{
+    position: relative;
+    background-color:rgb(211, 213, 212);
+    border-style: solid;
+    border-color: #000;
+    border-width: 1px;
+    width: 1500px;
+    height: 900px;
+    z-index: 0;
+}
+
+.main h2{
+    position:fixed;
+    width: 100%;
+    max-width: 1500px;
+    background-color:rgb(50, 53, 52);
+    color: #fff;
+    text-align: center;
+    border-style: solid;
+    border-color: #000;
+    border-width: 1px;
+    margin: 0px 0px 10px 0px;
+    z-index: 99999;
+}
+
+
+.display:hover .h2{
+    display: none;
+}
+
+img{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5%;
+
+}
+
+figcaption{
+    display: block;
+    max-width: fit-content;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    top: 80%;
+    padding: 0px 2px;
+}
+
+.img img{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.img1{
+    display: inline-block;
+    position: absolute;
+    top: 220px;
+    left: 432px;
+    rotate: -15deg;
+    opacity: var(--img-opacity);
+    z-index: 5;
+}
+
+.img2{
+    display: inline-block;
+    position: absolute;
+    top: 470px;
+    left: 500px;
+    rotate: -2deg;
+    opacity: var(--img-opacity);
+    z-index: 4;
+}
+
+.img3{
+    display: inline-block;
+    position: absolute;
+    top: 350px;
+    left: 400px;
+    rotate: -5deg;
+    opacity: var(--img-opacity);
+    z-index: 3;
+}
+
+.img4{
+    display: inline-block;
+    position: absolute;
+    top: 220px;
+    left: 700px;
+    rotate: 15deg;
+    opacity: var(--img-opacity);
+    z-index: 2;
+}
+
+.img5{
+    display: inline-block;
+    position: absolute;
+    top: 400px;
+    left: 690px;
+    rotate: 10deg;
+    opacity: var(--img-opacity);
+    z-index: 1;
+}
+
+.img:hover{
+    z-index: 999;
+    rotate: none;
+    opacity: 100%;
+}

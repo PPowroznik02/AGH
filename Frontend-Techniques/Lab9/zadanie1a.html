@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dodawanie elementów na stronie</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <div id="pierwszy">
+            <h2>Pierwszy element na stronie</h2>
+        </div>
+    </body>
+
+    <script>
+        function addParagraph(text){
+            let newP = document.createElement('p');
+
+            newP.innerHTML = text;
+
+            //pareant = document.getElementById('pierwszy');
+
+
+            document.getElementById('pierwszy').appendChild(newP);
+            //parent.insertBefore(newP, parent);
+        }
+
+        addParagraph('pierwszy');
+        addParagraph('drugi');
+        
+        
+    </script>
+</html>

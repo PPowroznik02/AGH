@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 5</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <style>
+            #slideshow{
+                width: 600px;
+                height: 240px;
+                margin: 80px auto;
+                padding: 10px;
+                position: relative;
+                box-shadow: 0 0 20px rgbs(0,0,0,4);
+            }
+
+            #slideshow > div{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+            }
+
+            
+        </style>
+
+
+        <script>
+            $(document).ready(function(){
+                $('#slideshow').children().hide();
+                $('#slideshow div:nth-child(1)').show();
+
+                let allChildren = $('#slideshow').children().length;
+                let i=1;
+
+                setInterval(function(){
+                    $('#slideshow div:nth-child('+i+')').fadeOut(1000);
+                    i++;
+                    if(i == allChildren + 1){
+                        i=1;
+                    }
+                    $('#slideshow div:nth-child('+i+')').fadeIn(1000);
+                }, 2500);
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="slideshow">
+            <div>
+                <img src="img_przykl5/ob1.jpg" alt="">
+            </div>
+            <div>
+                <img src="img_przykl5/ob2.jpg" alt="">
+            </div>
+            <div>
+                <img src="img_przykl5/ob3.jpg" alt="">
+            </div>
+            <div>
+                <img src="img_przykl5/ob4.jpg" alt="">
+            </div>
+        </div>
+    </body>
+</html>

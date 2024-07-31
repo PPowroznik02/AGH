@@ -1,0 +1,51 @@
+nav {
+    margin: 100px 0;
+    background-color: #1e9fe0;
+    width: 500px;
+}
+
+ul {
+    list-style: none;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.menu li {
+    margin: 0px 5px 0 0;
+    display: inline-block;
+    background-color: #1e9fe0;
+    padding: 15px 15px;
+}
+
+nav a {
+    display: block;
+    padding: 0 10px;
+    color: #FFF;
+    font-size: 20px;
+    line-height: 60px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #1e9fff;
+}
+
+.menu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 12%;
+}
+
+.menu ul li {
+    width: 110px;
+    display: list-item;
+}
+
+.menu li:hover>ul {
+    display: block;
+}

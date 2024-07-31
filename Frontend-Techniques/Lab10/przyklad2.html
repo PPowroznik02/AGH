@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 2</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+        <script>
+            $(document).ready(function() {
+                $('#hideButton').click(function() {
+                    $('#notka').slideToggle(function() {
+                        if($('#notka').is(':visible')){
+                            $('#hideButton').text('ukryj');
+                        } else {
+                            $('hideButton').text('pokaż');
+                        }
+                    }); //koniec slideToggle
+                }); //koniec click
+            }); //koniec ready
+        </script>
+    </head>
+
+    <body>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta saepe fugit, minus 
+            nisi asperiores, iusto dolorem libero pariatur debitis facilis expedita? Voluptate 
+            repudiandae nisi earum minus iure possimus iste dolorum.</p>
+        <p id="notka" style="display: none">Lorem ipsum dolor sit amet consectetur, adipisicing 
+            elit. Aliquam facilis voluptatum maxime eveniet ad ducimus deleniti a dignissimos 
+            fugit quo atque sit id perferendis, vel laborum. Repellendus, dolore ex. Illum! Lorem 
+            ipsum dolor sit amet consectetur, adipisicing elit. Mollitia accusamus corrupti harum 
+            labore atque in nostrum! Quisquam recusandae dolore accusantium obcaecati aliquid neque,
+             expedita, magni ipsam tempora alias, aperiam et. Lorem ipsum dolor, sit amet consectetur 
+             adipisicing elit. Pariatur fuga enim accusantium cumque nesciunt! Ratione cumque cum 
+             mollitia, ab quam nulla aliquam, aperiam delectus deleniti fugiat quibusdam. Eos, totam qui.</p>
+
+             <button id="hideButton">pokaż</button>
+    </body>
+</html>

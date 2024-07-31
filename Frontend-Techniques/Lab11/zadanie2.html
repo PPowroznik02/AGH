@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zadanie 2</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <style>
+            table{
+                border-collapse: collapse;
+                border: 2px solid black;
+                width: 100px;
+            }
+
+            td{
+                border: 1px solid black;
+                padding-left: 10px;
+            }
+
+            th{
+                border: 1px solid black;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function(){
+            var imiona = ['Bożena', 'Maria', 'Adam', 'Jagoda', 'Andrzej', 'Michał'];
+
+            imiona.sort();
+
+            // Creating a table dynamically
+            var table = $('<table>');
+
+
+            var headerRow = $('<tr>');
+            headerRow.append($('<th>').text('Imię'));
+            table.append(headerRow);
+
+            
+            // Creating table rows and cells
+            for(var i=0; i<imiona.length; i++){
+                var row = $('<tr>');
+                
+                var cell = $('<td>').text(imiona[i]);
+                row.append(cell);
+                
+                
+                table.append(row);
+            }
+            
+            // Appending the table to the HTML body
+            $('body').append(table);
+            
+            })
+        </script>
+        
+    </head>
+
+    <body>
+        <h1>Imiona</h1>
+        <div id="imiona"></div>
+    </body>
+</html>

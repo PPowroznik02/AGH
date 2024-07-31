@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 1</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script> 
+            $(document).ready(function() { 
+                $('tbody tr:even').css({
+                    'background-color': '#ddd',
+                    'color': '#666',
+                    'font-size': '11pt',
+                    'line-height': '2.5em'
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        
+        <table>
+            <thead>
+            <tr>
+            <th>ID</th>
+            <th>Nazwisko</th>
+            <th>Imię</th>
+            <th>Zawód</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>123</td>
+            <td>AAA</td>
+            <td>Azs</td>
+            <td>Swww</td>
+            </tr>
+            <tr>
+            <td>123</td>
+            <td>AAA</td>
+            <td>Azs</td>
+            <td>Swww</td>
+            </tr>
+            <td>123</td>
+            <td>AAA</td>
+            <td>Azs</td>
+            <td>Swww</td>
+            </tr>     
+            </tbody>
+            </table>
+    </body>
+
+
+
+</html>

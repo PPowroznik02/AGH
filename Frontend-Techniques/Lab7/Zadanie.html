@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularz</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Zadanie.css">
+</head>
+<body>
+    <div class="section">
+            <h4>Zaznacz dowloną ilość kratek</h4>
+                <div> 
+                    <input type="checkbox" name="opcja"> Opcja 1 <br>
+                    <input type="checkbox" name="opcja"> Opcja 2 <br>
+                    <input type="checkbox" name="opcja"> Opcja 3 <br>
+                </div>
+            <h4>Zaznacz dowloną ilość opcji z listy</h4>
+            <select name="lista" multiple>
+                  <option value="opcya">Brak</option>
+                  <option value="opcya">Opcja 1</option>
+                  <option value="opcya">Opcja 2</option>
+                  <option value="opcya">Opcja 3</option>
+            </select>
+    </div>
+
+    <div class="section">
+        <h4>Wybierz tylko jedną opcję</h4>
+            <div>
+                <input type="radio" name="opcya" value="opcja 1">Opcja 1 <br>
+                <input type="radio" name="opcya" value="opcja 2">Opcja 2 <br>
+                <input type="radio" name="opcya" value="opcja 3">Opcja 3 <br>
+            </div>
+        <H4>Wybierz jedną opcję z listy</H4>
+        <select name="lista" size="1">
+            <option value="opcya">Opcja 1</option>
+            <option value="opcya">Opcja 2</option>
+            <option value="opcya">Opcja 3</option>
+
+        </select>
+    </div>
+
+    <div class="section">
+        <h4>Napisz opinię</h4>
+            <div>
+                <textarea name="opinion" id="" cols="30" rows="10">Dodaj swoją opinię</textarea>
+            </div>
+    </div>
+
+    <button type="submit">Zatwierdź</button>
+</body>
+</html>

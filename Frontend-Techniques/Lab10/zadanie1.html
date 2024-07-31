@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zadanie 1</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <style>
+            #notatka{
+                background-color: antiquewhite;
+            }
+
+            #button{
+                width: 100px;
+                height: 30px;
+                background-color: darkslategrey;
+                color: white;
+                
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #line{
+                border: 3px solid black;
+                border-radius: 5px;
+            }
+        </style>
+
+
+        <script>
+            $(document).ready(function() {
+                $('#button').click(function() {
+                    $('#notatka').slideToggle('slow','swing', function() {
+                        if($('#notatka').is(':visible')){
+                            $('#button').text('ukryj');
+                        } else {
+                            $('#button').text('pokaż');
+                        }
+                    }); //koniec slideToggle
+                }); //koniec click
+            }); //koniec ready
+        </script>
+    </head>
+
+    <body>
+        
+        <div id="notatka" style="display: none;">
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, natus, 
+                alias ad qui ducimus quo praesentium porro magni incidunt atque optio expedita,
+                 mollitia consequuntur doloribus maxime assumenda enim asperiores iusto? 
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique hic temporibus
+                  sequi vel odio, qui tempora saepe ducimus consequuntur eaque, inventore sint velit
+                 aspernatur accusantium, repudiandae quidem ullam. Itaque, amet! Lorem ipsum dolor 
+                 sit amet consectetur, adipisicing elit. Totam nam ab quis reprehenderit a aut 
+                 officiis incidunt quae, soluta officia consequuntur quisquam mollitia praesentium 
+                 maiores eveniet, aperiam, facilis ratione veniam? Lorem ipsum dolor sit amet 
+                 7consectetur adipisicing elit. Consequatur, vitae quo voluptatibus voluptates 
+                 assumenda numquam doloribus possimus quos aliquid ullam maiores incidunt! Atque, 
+                 earum nostrum quaerat consequuntur cupiditate numquam laboriosam? Lorem ipsum dolor 
+                 sit amet consectetur adipisicing elit. Quod neque quis perspiciatis aperiam obcaecati 
+                 rem nihil rerum repellat alias architecto sunt, nisi praesentium harum voluptate, 
+                 molestiae recusandae nulla temporibus assumenda.
+            </p>
+        </div>
+        <div id="line"></div>
+        <button id="button" >przycisk</button>
+    </body>
+</html>

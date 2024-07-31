@@ -1,0 +1,23 @@
+{
+    "name": "ppowroznik/demo",
+    "description": "Simple project",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "PiotrPowroznik",
+            "email": "ppowroznik@student.agh.edu.pl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "monolog/monolog": "^3.5",
+        "predis/predis": "^2.2",
+        "myclabs/deep-copy": "^1.11"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

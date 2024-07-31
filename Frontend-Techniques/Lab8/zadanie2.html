@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Klawisze Zdareń</title>
+        <meta charset="utf-8">
+
+        <style>
+            p{margin: 10px;}
+            #hide1{display: none; color: red;}
+            #hide2{display: none; color: red;}
+            body{background-color:wheat;}
+
+        </style>
+    </head>
+    <body>
+        <p>
+            facilis exercitationem, laborum excepturi pariatur perspiciatis! Veniam, <br>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta velit 
+            ipsum, cum sequi voluptas recusandae culpa debitis molestiae corporis,
+            blanditiis voluptates dolore animi? Lorem ipsum dolor sit amet consectetur <br>
+            adipisicing elit. Omnis iure, impedit eligendi provident accusantium voluptates
+            quia a esse doloremque sequi neque, illo eum officiis laudantium autem libero.
+        </p>
+
+        <a href="#" onclick="displayHide('hide1')"><p onclick="changeText('change1')" id="change1">Pokaż</p></a>    
+        <p id="hide1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea vitae itaque consequuntur 
+            eaque qui ut aspernatur quia, quae dolores iure dolor repellendus nobis reiciendis, <br>
+            tempore iusto dolorum voluptatum rem fuga. Lorem ipsum dolor sit amet consectetur.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, ratione. Sint.
+        </p>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nihil sunt quae ut 
+            pariatur incidunt rem ipsum voluptates reprehenderit nesciunt quos asperiores repellat, <br>
+            explicabo, quo, minus architecto velit. Dolorem, voluptatibus.Lorem ipsum dolor sit amet 
+            consectetur adipisicing elit. Eveniet nulla, voluptates atque facere ipsa eligendi, <br>
+            aliquam quidem suscipit rerum sint deserunt placeat totam aut consequuntur esse tempora,
+             doloremque ipsum sequi. Lorem ipsum, dolor sit amet consectetur adipisicing elit dolorem.
+        </p>
+
+        <a href="#" onclick="displayHide('hide2')"><p onclick="changeText('change2')" id="change2">Pokaż</p></a>    
+        <p id="hide2">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque consequatur vero 
+            deleniti repellendus rem amet optio nobis nulla, velit dolorem possimus ex a harum, <br>
+            qui soluta error impedit quisquam cupiditate! Lorem ipsum dolor sit amet consectetur 
+            adipisicing elit. Qui repellendus accusantium minus excepturi vero tempora eligendi.
+        </p> 
+
+        <script>
+            function displayHide(hideId){
+                let dis = document.getElementById(hideId);
+                    if (dis.style.display == "block") {
+                        dis.style.display = "none";
+                    } else {
+                        dis.style.display = "block";
+                    }
+            }
+
+            function changeText(changeId){
+                let ch = document.getElementById(changeId);
+                    if (ch.innerHTML == "Pokaż"){
+                        ch.innerHTML = "Zwiń";
+                    } else{
+                        ch.innerHTML = "Pokaż";
+                    }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Konwerter mil na kilometry</title>
+    </head>
+    <body>
+        <h3>Konwerter mil na kilometry</h3>
+        <script>
+            let myDistanceMiles = 130;
+            let myDistanceKM = myDistanceMiles * 1.60934;
+            let round = myDistanceKM.toFixed(2);
+
+            console.log(typeof(round));
+            document.write(`Odległość ${myDistanceMiles} mil odpowiada ${myDistanceKM} kilometra`);
+            document.write(`<br> Odległość ${myDistanceMiles} mil odpowiada ${round} kilometra`);
+        </script>
+    </body>
+</html>

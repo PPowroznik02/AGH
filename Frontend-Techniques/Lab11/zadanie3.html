@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zadanie 3</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+        <style>
+                  
+          ul {
+            margin: 0px;
+            padding: 0px;
+            background: #e3e3e3;
+            list-style-type: none;
+            position: relative;
+          }
+          
+          ul li {
+            display: inline-block;
+          }
+          
+          ul li a {
+            padding: 15px;
+            color: #292929;
+            text-decoration: none;
+            display: block;
+          }
+          
+          ul li:hover {
+            background: lightgrey;
+          }
+          
+          ul ul {
+            position: absolute;
+            min-width: auto;
+            background: lightgrey;
+            display: none;
+          }
+          
+          ul ul li {
+            display: block;
+            background: #e3e3e3;
+          }
+          
+          ul li:hover ul {
+            display: block;
+          }
+          
+      /*    
+          @media (max-width: 768px) {
+            nav div {
+              display: block;
+            }
+            ul {
+              display: none;
+              position: static;
+              background: #e3e3e3;
+            }
+            ul li {
+              display: block;
+            }
+            ul ul {
+              position: static;
+              background: #e3e3e3;
+            }
+          }
+          */
+        </style>
+
+        <script>
+            
+        </script>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="">Patent 01</a></li>
+                <li>
+                    <a href="">Patent 02</a>
+                    <ul>
+                        <li><a href="">Item 1</a></li>
+                        <li><a href="">Item 2</a></li>
+                        <li><a href="">Item 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Patent 03</a></li>
+                <li><a href="">Patent 04</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>

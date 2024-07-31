@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        *{
+            margin: 0px auto;
+            padding: 0;
+            font-family: Helvetica, sans-serif;
+        }
+        body{
+            background-color: #006600;
+        }
+        #main{
+            margin-top: 50px;
+            width: 300px;
+            box-shadow: 5px 5px 7px black;
+            border-radius: 10px;
+        }
+        #header{
+            background-color: #001a00;
+            color: white;
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 10px 10px 0 0;
+        }
+        #form{
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            row-gap: 12px;
+            padding: 15px;
+            height: 360px;
+            border-radius: 0 0 10px 10px;
+        }
+        #ocena{
+            height: 40px;
+        }
+        input{
+            height: 25px;
+        }
+        #button{
+            background-color: #800000;
+            color: white;
+            width: 160px;
+            margin: 10px auto;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        #res{
+            display: flex;
+            flex-direction: column;
+            visibility: hidden;
+        }
+        #res p:nth-child(1), #res p:nth-child(3){
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function obl(kwota, ocena, osob){
+            if( !kwota || !ocena ) {
+                alert("Proszę uzupełnić pola!");
+                return;
+            }
+            if( osob < 1 ) osob = 1;
+            document.getElementById('wynik').innerHTML = (kwota * ocena / 100 / osob).toFixed() + ' zł';
+            document.getElementById('res').style.visibility = 'visible';
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="main">
+        <p id="header">Kalkulator Napiwków</p>
+        <div id="form">
+            <p>Podaj kwotę rachunku</p>
+            <div>
+                <input type="number" name="kwota" id="kwota" placeholder="Kwota rachunku"><span> zł</span>
+            </div>
+            <p>Jak oceniasz obsługę?</p>
+            <select name="ocena" id="ocena">
+                <option value="" selected disabled>-- Wybierz z poniższych --</option>
+                <option value="30">30% - wyróżniająca</option>
+                <option value="20">20% - dobra</option>
+                <option value="15">15% - średnia</option>
+                <option value="10">10% - zła</option>
+                <option value="5">5% - bardzo zła</option>
+            </select>
+            <p>Ile osób dzieli rachunek?</p>
+            <input type="number" name="osob" id="osob" placeholder="Liczba osób płacących">
+            <div id="button" onclick="obl(kwota.value, ocena.value, osob.value)">
+                <p>OBLICZ</p>
+            </div>
+            <div id="res">
+                <p>KWOTA NAPIWKU</p>
+                <p id="wynik"></p>
+                <p>każdy</p>
+            </p>
+        </div>
+    </div>
+
+</body>

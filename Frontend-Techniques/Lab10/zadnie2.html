@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zadanie 1</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <style>
+
+        </style>
+
+    <script>
+        $(document).ready(function() {
+            //$("<li>Pięć</li>").appendTo("#lista");
+            //$("#lista li:first-child").clone().appendTo("#lista");
+            //$("#lista li:last-child" ).remove();
+
+            /*
+                var newElement = $('<p>Nowy element</p>');
+                newElement.insertAfter('ul:last');
+                //newElement.insertBefore('ul:first');
+                var newElement2 = $('<p>Nowy element</p>');
+                newElement2.insertBefore('ul:first');
+            */
+
+            $('#myDiv a:first').attr('href', 'http://gazeta.pl');           
+        }); 
+    </script>
+    </head>
+
+    <body>
+        <div>
+            <ul id="lista"> 
+                <li>Jeden</li>
+                <li>Dwa</li>
+                <li>Trzy</li>
+                <li>Cztery</li>
+              </ul> 
+        </div>
+
+        <div id="myDiv">
+            <a href="http://wp.pl">wp</a>
+            <a href="http://onet.pl">onet</a>
+        </div>
+    </body>
+</html>

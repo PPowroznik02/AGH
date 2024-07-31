@@ -1,0 +1,129 @@
+@startuml
+
+set separator ::
+
+class App {
+    + run() : void
+    - render(Widget\Widget) : void
+}
+
+note as AppNote
+1. Creates storage object.
+2. Creates several widgets.
+3. Stores widgets into storage.
+4. Loads widgets from storage.
+5. Draws widgets using render method.
+end note
+
+App .. AppNote
+
+namespace Widget {
+
+    abstract class Widget {
+        + draw() : void
+    }
+
+    class Link {
+        + draw() : void
+    }
+
+    note as LinkNote
+    Prints link HTML using echo command.
+    Example: <a href="">widget_link_1</a>
+    end note
+
+    Link .. LinkNote
+
+    class Button {
+        + draw() : void
+    }
+
+    note as ButtonNote
+    Prints button HTML using echo command.
+    Example: <input type="button" value="widget_button_2">
+    end note
+
+    Button .. ButtonNote
+
+    Widget <|-- Link
+    Widget <|-- Button
+}
+
+App ..> Widget::Widget : draws
+App ..> Widget::Button : creates
+App ..> Widget::Link : creates
+
+namespace Concept {
+
+    abstract class Distinguishable {
+        - id : int
+        + key() : string
+        - name() : string
+    }
+
+    note as DistinguishableNote
+    The key() method creates unique key for an object.
+    Takes id field and combines it with type name.
+    Example: widget_link_1, widget_button_2
+    Uses static::class to get type of most derived class.
+    end note
+
+    Distinguishable .. DistinguishableNote
+}
+
+Concept::Distinguishable <|-- Widget::Widget
+
+namespace Config {
+
+    class Directory {
+        - {static} root : string
+        + {static} set(string) : void
+        + {static} root() : string
+        + {static} storage() : string
+    }
+
+    note as DirectoryNote
+    Used to set path to main directory in index.php.
+    Return path to storage/.
+    end note
+
+    Directory .. DirectoryNote
+}
+
+namespace Storage {
+
+    interface Storage {
+        + store(Distinguishable) : void
+        + loadAll() : Distinguishable[]
+    }
+
+    class FileStorage {
+        + store(Distinguishable) : void
+        + loadAll() : Distinguishable[]
+    }
+
+    note as FileStorageNote
+    Stores serialized objects in storage/ directory.
+    Example file storage/widget_button_2 contains
+    serialized object of type Button with id 2.
+    end note
+
+    FileStorage .. FileStorageNote
+
+    Storage <|-- FileStorage
+}
+
+Storage::Storage ..> Concept::Distinguishable : stores/loads
+Storage::FileStorage ..> Config::Directory : uses
+
+App ..> Storage::FileStorage : creates
+App ..> Storage::Storage : uses
+
+
+package "index.php" <<Rectangle>> {
+}
+
+"index.php" ..> App : creates
+"index.php" ..> Config::Directory : configures
+
+@enduml

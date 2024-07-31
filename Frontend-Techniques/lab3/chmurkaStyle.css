@@ -1,0 +1,22 @@
+figure{
+    float: inline-start;
+    max-width: 144px;
+    margin: 20px 20px;
+}
+
+figcaption{
+    background-color: #444;
+    color: #fff;
+    font: italic smaller sans-serif;
+    text-align: center;
+    opacity: 80%;
+    position:relative;
+    top: -100px;
+    left: 50%;
+    display: none;
+}
+
+figure img:hover + figcaption{
+    display: block;
+    z-index: 1;
+}

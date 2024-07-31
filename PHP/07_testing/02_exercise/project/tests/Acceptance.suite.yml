@@ -1,0 +1,32 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: AcceptanceTester
+modules:
+    enabled:
+        # - PhpBrowser:
+        #    url: http://localhost:8888
+        - WebDriver:
+            # Do not forget to start Selenium - execute below command in bash:
+            #   PATH=/opt/selenium:$PATH java -jar /opt/selenium/selenium-server-4.18.0.jar standalone
+            url: http://localhost:8888
+            browser: chrome
+        - Filesystem
+        - Asserts
+        - Db:
+              dsn: 'mysql:host=127.0.0.1;dbname=test'
+              user: 'test'
+              password: 'test123'
+        - Redis:
+              host: '127.0.0.1'
+              port: 6379
+              database: 0
+              cleanupBefore: 'test'
+# add Codeception\Step\Retry trait to AcceptanceTester to enable retries
+step_decorators:
+    - Codeception\Step\ConditionalAssertion
+    - Codeception\Step\TryTo
+    - Codeception\Step\Retry

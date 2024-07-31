@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 2</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="jquery.easing.1.3.js"></script>
+
+        <style>
+            h2{
+                border-bottom: 2px solid #015287;
+                color: #d15600;
+                padding: 5px 0 5px 10px;
+                margin: 0;
+            }
+
+            #box{
+                width: 400px;
+            }
+
+            #panels h2{
+                background-color: #94c5eb;
+                border-bottom: 1px solid #fff;
+                color: #00314f;
+                font-weight: normal;
+            }
+
+            #panels div{
+                height: 120px;
+                background-color: #f4f3ee;
+                border-bottom: 1px solid #fff;
+                position: relative;
+            }
+
+            #panels p{
+                margin: 0 10px 0 0;
+                padding: 10px;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function(){
+                $('#panels > div').hide();
+                $('#panels h2').click(function(){
+                    $(this).next().animate(
+                        {
+                            'height': 'toggle'
+                        },
+                        'slow',
+                        'easeOutBounce'
+                    );
+                });
+            });
+        </script>
+
+
+
+    </head>
+
+    <body>
+        <div id="box">
+            <div id="panels">
+                <h2>Lorem ipsum</h2>
+                <div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Animi alias cumque totam repudiandae facere cum voluptates
+                          ea voluptate officiis, beatae porro doloribus veniam,
+                           temporibus modi neque illum, illo natus tempore.
+                    </p>
+                </div>
+
+                <h2>Phasellus libero</h2>
+                <div>
+                    <p>
+                        Phasellus ipsum dolor sit amet consectetur adipisicing elit.
+                         Voluptate nulla, aliquam assumenda expedita placeat inventore 
+                         fugit provident voluptas odio iure commodi ab facilis fuga quo 
+                         alias, dolore dolores temporibus totam!
+                    </p>
+                </div>
+
+                <h2>Visamus nibh</h2>
+                <div>
+                    <p>
+                        Visamus ipsum dolor sit amet consectetur adipisicing elit. 
+                        Magnam et excepturi cupiditate maxime mollitia voluptate quia 
+                        nobis eligendi. Illum deleniti consequuntur temporibus ut soluta 
+                        eveniet similique quis illo natus numquam.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

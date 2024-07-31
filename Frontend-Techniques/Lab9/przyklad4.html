@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zmiana koloru tła</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="btn">Kliknij!</button>
+
+        <script>
+            const btn = document.getElementById('btn');
+
+            btn.addEventListener('click', event => {
+                event.target.style.backgroundColor = 'green';
+            });
+        </script>
+    </body>
+</html>

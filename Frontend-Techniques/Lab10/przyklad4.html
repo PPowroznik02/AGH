@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 4</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#fi').hide();
+                $('#fadein').click(function(){
+                    $('#fi').fadeIn(3000);
+                });
+
+                $('#fadeout').click(function(){
+                    $('#fo').fadeOut(2000);
+                });
+
+                $('#fadetoggle').click(function(){
+                    $('#ft').fadeToggle('slow');
+                });
+
+                $('#fadeto').click(function(){
+                    $('#fto'.fadeTo(3000, 0.5));
+                });
+
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <body>
+            <div>
+            <input type="button" id="fadein" value="fadeIn">
+            <p id="fi" style="width: 300px; border: 1px solid #eee;">
+            Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,
+            non felis. Maecenas malesuada elit lectus felis
+            </p>
+            </div>
+            <div>
+            <input type="button" id="fadeout" value="fadeOut">
+            <p id="fo" style="width: 300px; border: 1px dotted #eee;">
+            Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,
+            non felis. Maecenas malesuada elit lectus felis
+            </p>
+            </div>
+            <div>
+            <input type="button" id="fadetoggle" value="fadeToggle">
+            <p id="ft" style="width: 300px; border: 1px dotted #444;">
+            Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,
+            non felis. Maecenas malesuada elit lectus felis</p>
+        </div>
+        <div>
+        <input type="button" id="fadeto" value="fadeTo">
+        <p id="fto" style="width: 300px; border: 1px dotted #444; background: #0f3d0f; color:#fff">
+            Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,
+            non felis. Maecenas malesuada elit lectus felis
+            </p>
+        </div>
+    </body>
+</html>

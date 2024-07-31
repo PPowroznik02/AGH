@@ -1,0 +1,36 @@
+#open{
+    margin: 0;
+    cursor: pointer;
+    background: rgb(0, 59, 77) url(images/open.png) no-repeat 8px 7px;
+    color: rgb(230, 249, 255);
+    padding: 5px 0 2px 30px;
+}
+
+#login{
+    width: 250px;
+    position: absolute;
+    left: 100px;
+    top: 6px;
+}
+
+#login form {
+    padding: 10px 10px 10px 10px;
+    display: none;
+    border: 1px solid rgb(153, 231, 255);
+}
+
+#login label {
+    display: inline-block;
+    width: 100px;
+    margin: 0 15px 0 0;
+    color: rgb(58, 80, 123);
+}
+
+#login input{
+    font-size: 14px;
+}
+
+#login .close {
+    background-image: url(images/close.png);
+    background-color: rgb(0, 59, 77);
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        *{
+            margin: 0px auto;
+            padding: 0;
+            font-family: Helvetica, sans-serif;
+        }
+        body{
+            background-color: #000066;
+        }
+        #main{
+            margin-top: 50px;
+            width: 500px;
+            box-shadow: 5px 5px 7px black;
+            border-radius: 10px;
+            border: 1px solid #9999ff;
+        }
+        #header{
+            background-color: #9999ff;
+            color: white;
+            text-align: center;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 9px 9px 0 0;
+            font-size: large;
+        }
+        #game{
+            background-color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;        
+            padding: 15px;
+            border-radius: 0 0 9px 9px;  
+        }
+        #game > p{
+            font-weight: bold;
+        }
+        input{
+            height: 30px;
+            width: 250px;
+            text-align: center;
+        }
+        button{
+            background-color: #0000b3;
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+        }
+        #div_res{
+            border: 1px solid #40406b;
+            height: 150px;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #800000;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        var liczba = Math.floor(Math.random() * 50);
+
+        function check(){
+            let prob = document.getElementById('prob');
+            if(prob.value == 0) return;
+            let strzal = document.getElementById('liczba');
+            let txt = document.getElementById('res');
+            if(!strzal.value) txt.innerText = "Wprowadź liczbę!";
+            else if(strzal.value == liczba) {
+                prob.value = 0;
+                strzal.value = '';
+                txt.innerText = "Wygrałeś";
+                return;
+            }
+            else if(strzal.value > liczba) txt.innerText = "Za dużo";
+            else if(strzal.value < liczba) txt.innerText = "Za mało";
+            prob.value -= 1;
+            if(prob.value == 0) txt.innerText = "Koniec gry";
+        }
+
+        function giveUp(){
+            document.getElementById('res').innerText = liczba;
+            document.getElementById('prob').value = 0;
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <p id ="header">Zgadnij liczbę z zakresu od 0-50</p>
+        <div id="game">
+            <p>Ilość prób</p>
+            <input type="number" name="prob" id="prob" value=10>
+            <p>Podaj liczbę</p>
+            <input type="number" name="liczba" id="liczba">
+                <button onclick="check()">Sprawdź</button>
+                <button onclick="giveUp()">Poddaję się</button>
+            <div id="div_res">
+                <p id="res"></p>
+            </div>
+        </div>
+    </div>
+</body>

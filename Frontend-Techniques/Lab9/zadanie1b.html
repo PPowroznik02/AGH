@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Usuwanie dzieci</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div>
+            <div id="pojemnik">
+                <p id="akapit"> Akapit do usunięcia </p>
+                <p> Akapit, który zostanie</p>
+                </div>
+        </div>
+    </body>
+
+    
+
+    <script>
+        function removeChild(){
+            let list = document.getElementById("pojemnik");
+
+            list.removeChild(list.firstElementChild);
+        }
+
+        removeChild();
+    </script>
+</html>

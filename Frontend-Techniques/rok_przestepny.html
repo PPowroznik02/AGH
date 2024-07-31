@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: "Tahoma", sans-serif;
+	}
+	body{
+		background-color: #003566;
+	}
+	#main{
+		margin: 50px auto;
+		background-color: #e0ebeb;
+		width: 500px;
+		height: 450px;
+		border: 1px solid #001a33;
+		box-shadow: 2px 2px 4px #000000;
+	}
+	h1{
+		background-color: #001a33;
+		color: white;
+		margin-left: -1px;
+	}
+	#obl, #res{
+		background-color: #0056b3;
+		color: white;
+	}
+	#result{
+		color: #cc0000;
+		visibility: hidden;
+	}
+	h1{
+		font-size: 24px;
+		text-align: center;
+		padding: 16px;
+	}
+	#form{
+		padding: 20px 35px;
+	}
+	#rok{
+		margin: 40px 0 40px 20px;
+	}
+	#result{
+		text-align: center;
+		font-weight: bold;
+	}
+	#btns{
+		display: flex;
+		justify-content: center;
+		margin-top: 40px;
+	}
+	#obl, #res{
+		width: 130px;
+		height: 50px;
+		margin: 20px;
+	}
+	</style>
+	<script>
+		function kalk(rok){
+			if(rok<1) return;
+			let txt = document.getElementById('result');
+			if (rok % 4 == 0 && rok % 100 !=0 || rok % 400 == 0) {
+				txt.innerHTML = "Ten rok jest przestępny";
+			}
+			else {
+				txt.innerHTML = "Ten rok nie jest przestępny";
+			}
+			txt.style.visibility = 'visible';
+		}
+		function reset(){
+			document.getElementById('rok').value = "";
+			document.getElementById('result').style.visibility = "hidden";
+		}
+	</script>
+</head>
+<body>
+<div id="main">
+	<h1>Czy ten rok jest przestępny?</h1>
+	<div id="form">
+		<h3>Informacja:</h3><br>
+		<p>
+			rok jest przestępny kiedy<br>
+			1) jest podzielny przez 4 i nie jest podzielny przez 100<br>
+			2) lub jest podzielny przez 400
+		</p>
+
+		<span>Wpisz rok: </span><input type="number" name="rok" id="rok" placeholder="wpisz rok">
+
+		<p id="result">Ten rok jest przestępny</p>
+
+		<div id="btns">
+			<button id="obl" onclick="kalk(rok.value)">Sprawdź</button>
+			<button id="res" onclick="reset()">Wyczyść</button>
+		</div>
+	</div>
+</div>
+</body>

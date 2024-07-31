@@ -1,0 +1,40 @@
+{
+  "name": "ddgg/project",
+  "description": "Project",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Damian Gwiżdż",
+      "email": "damian.gwizdz@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.3",
+    "ext-pdo": "*",
+    "monolog/monolog": "^3.5",
+    "predis/predis": "^2.2"
+  },
+  "require-dev": {
+    "codeception/codeception": "^5.0",
+    "codeception/module-asserts": "^3.0",
+    "codeception/module-phpbrowser": "^3.0",
+    "codeception/module-filesystem": "^3.0",
+    "codeception/module-db": "^3.1",
+    "codeception/module-redis": "^3.1",
+    "codeception/module-webdriver": "^4.0",
+    "friendsofphp/php-cs-fixer": "^3.39",
+    "phpstan/phpstan": "^1.10",
+    "spaze/phpstan-disallowed-calls": "^2.16"
+  }
+}

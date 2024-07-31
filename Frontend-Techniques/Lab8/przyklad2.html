@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>przyklad2</title>
+</head>
+<body>
+    <p onmousedown="changeColors(this, 'red', '24pt')" onmouseup="changeColors(this, 'green', '18pt')">
+        Naciśnij i przytrzymaj klawisz myszy. A następnie zwolnij klawisz myszy.
+        Funkcja zmieni kolor i rozmiar tekstu. <br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        Nihil dolor autem, voluptatem sed ab voluptate earum <br> libero 
+        repellendus esse veniam accusantium error illo ipsa eligendi 
+        iusto fuga? Ut, sunt esse. 
+    </p>
+
+    <script>
+        function changeColors(element, color, size){
+            element.style.color = color;
+            element.size.fontSize = size;
+        }
+    </script>
+</body>
+</html>

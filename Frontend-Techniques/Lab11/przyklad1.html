@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 1</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+        <script>
+            $(document).ready(function(){
+                $('div').animate({
+                    left: '+=50',
+                    opacity: 0.25
+                },
+                3000
+                );
+            });
+        </script>
+
+        <style>
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                border: 1px solid #000;
+                position: relative;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+</html>

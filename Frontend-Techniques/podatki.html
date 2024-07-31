@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: "Times New Roman";
+	}
+	body{
+		background-color: #141f1f;
+	}
+	#main{
+		margin: 50px auto;
+		background-color: #e0ebeb;
+		width: 400px;
+		border-radius: 8px;
+		box-shadow: 2px 2px 4px #000000;
+	}
+	h1, #obl, #res{
+		background-color: #283e3e;
+		color: white;
+	}
+	h1{
+		font-size: 24px;
+		text-shadow: 2px 2px 4px #000000;
+		text-align: center;
+		padding: 16px;
+		border-radius: 8px 8px 2px 2px;
+		box-shadow: 0px 2px 3px #252525;
+	}
+	#form{
+		padding: 15px 25px;
+	}
+	#d1{
+		display: grid;
+		grid-template-columns: 90px 180px 1fr;
+		row-gap: 20px;
+	}
+	.c1{
+		grid-column: 1;
+	}
+	.c2{
+		grid-column: 2;
+	}
+	#d1, #d2{
+		padding: 15px 0;
+	}
+	#podatek{
+		width: 122px;
+	}
+	#netto{
+		width: 160px;
+	}
+	#btns{
+		display: flex;
+		justify-content: space-around;
+		margin: 10px 0 -10px;
+	}
+	#obl, #res{
+		width: 150px;
+		height: 30px;
+	}
+	</style>
+	<script>
+		function kalk(brutto, stan){
+			if (!stan) return;
+			let tax = 0;
+			switch(stan){
+				case "Alabama": tax = 4; break;
+				case "Alaska": tax = 0; break;
+				case "Arizona": tax = 5.6; break;
+				case "Arkansas": tax = 6.5;
+			}
+			let podatek = tax/100 * brutto;
+			podatek = podatek.toFixed(2);
+			document.getElementById('wys_pod').innerHTML = "Wysokość podatku: " + tax.toFixed(2) + "%";
+			document.getElementById('podatek').value = podatek;
+			document.getElementById('netto').value = (brutto - podatek).toFixed(2);
+		}
+		function reset(){
+			document.getElementById('brutto').value = "";
+			document.getElementById('stan').value = "";
+			document.getElementById('wys_pod').innerHTML = "";
+			document.getElementById('podatek').value = "";
+			document.getElementById('netto').value = "";
+		}
+	</script>
+</head>
+<body>
+<div id="main">
+	<h1>Kalkulator podatków</h1>
+	<div id="form">
+		<div id="d1">
+			<p class="c1">Pensja brutto:</p><input class="c2" type="number" name="brutto" id="brutto"><br>
+			<select class="c2" name="stan" id="stan">
+				<option value="" selected>Wybierz stan</option>
+				<option value="Alabama">Alabama</option>
+				<option value="Alaska">Alaska</option>
+				<option value="Arizona">Arizona</option>
+				<option value="Arkansas">Arkansas</option>
+			</select>
+			<p class="c2" id="wys_pod"></p>
+		</div>
+		<hr>
+		<div id="d2">
+			<div id="results">
+				<span>Wielkość podatku:</span><input id="podatek" name="podatek" disabled><br><br>
+				<span>Pensja netto:</span><input id="netto" name="netto" disabled><br><br>
+			</div>
+			<div id="btns">
+				<button id="obl" onclick="kalk(brutto.value, stan.value)">Oblicz</button>
+				<button id="res" onclick="reset()">Wyczyść</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cytaty</title>
+    <style type="text/css">
+        body {
+            background-color: #141f1f;
+            font-family: Georgia;
+            text-align: center;
+        }
+
+        #panel {
+            background-color: #a8a6a0;
+            width: 70%;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
+            margin: auto;
+        }
+
+        #panel p {
+            color: white;
+            font-size: 1.2em;
+            text-shadow: 0 0 10px rgba(0, 0, 0, .8);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="panel">
+        <p id="cytat">Nasze życie jest takim, jakim uczyniły je nasze myśli</p>
+        <p id="autor">Marek Aureliusz</p>
+    </div>
+    <script>
+        const cytaty = [
+            ["Nasze życie jest takim, jakim uczyniły je nasze myśli", "Marek Aureliusz"],
+            ["Dramatem życia jest to, że starzejemy się zbyt szybko, a mądrzejemy zbyt późno", "Benjamin Franklin"],
+            ["Nie odnajdziesz spokoju unikając życia", "Virginia Woolf"],
+            ["Martw się, co inni ludzie o tobie myślą, a zawsze będziesz ich więźniem", "Lao Tzu"]
+        ];
+
+        function losujCytat() {
+            const index = Math.floor(Math.random() * cytaty.length);
+            document.querySelector("#cytat").innerHTML = cytaty[index][0];
+            document.querySelector("#autor").innerHTML = cytaty[index][1];
+        }
+        setInterval(losujCytat, 3000);
+    </script>
+</body>
+
+</html>

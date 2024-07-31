@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Przyklad 3</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVsiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+        
+        <script src="jquery.easing.1.3.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#panel').hover(
+                    function(){
+                        $(this).stop().animate(
+                            {
+                                left: '0',
+                                backgroundColor: 'rgb(153, 204, 255)',
+                            },
+                            500,
+                            'easeInSine'
+                        );
+                    },
+                    function() {
+                        $(this).stop().animate(
+                            {
+                                left: '-92px',
+                                backgroundColor: 'rgb(110, 138, 195)'
+                            },
+                            1500,
+                            'easeOutBounce'
+                        );
+                    }
+                );
+            })
+        </script>
+
+        <style>
+            #panel{
+                width: 70px;
+                background-color: rgb(110, 138, 195);
+                padding: 20px 20px 0 20px;
+                position: absolute;
+                left: -92px;
+                z-index: 1;
+            }
+
+            #panle img{
+                margin-bottom: 20px;
+                border: 1px solid rgb(0, 0, 0);
+            }
+
+            #main{
+                width: 700px;
+                font-family: Lato;
+                margin-left: 150px;
+            }
+
+            #main h1{
+                font-size: 14pt;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="wrapper">
+
+            <div id="panel">
+                <img src="img_przykl5/ob2.jpg" width="70" alt="blue">
+                <img src="img_przykl5/ob1.jpg" width="70" alt="blue">
+                <img src="img_przykl4/small/z1.jpg" width="70" alt="blue">
+                <img src="img_przykl5/ob1.jpg" width="70" alt="blue">
+                <img src="img_przykl4/small/z1.jpg" width="70" alt="blue">
+            </div>
+
+            <div id="main">
+                <h1>Wysuwany pasek ze zdjeciami</h1>
+                <p>Imiesc wskaznik myszy na niebieskim pasku</p>
+            </div>
+
+        </div>
+    </body>
+</html>
