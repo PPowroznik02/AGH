@@ -5,7 +5,7 @@ AGH academic courses and projects repository! This repository is designed to sto
 - [Java](Java/)
 - [PHP](/PHP)
 - [C](/C-Programming)
-- [.NET C#](/C#-.NET)
+- [C# .NET](/C-Sharp-NET)
 - [GIS](/GIS)
 - [Frontend Techniques](/Frontend-Techniques)
 - [Python](/Python)
@@ -14,9 +14,3 @@ AGH academic courses and projects repository! This repository is designed to sto
 - [Spatial Data Analysis](/Spatial-Data-Analysis)
 - [Electronic Measuring Techniques](/Electronic-Measuring-Techniques)
 - [Environmental Data Processing](/Environmental-Data-Processing)
-
-
-
-
-
-
