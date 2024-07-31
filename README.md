@@ -1,4 +1,4 @@
-# AGH COurses
+# AGH Courses
 AGH academic courses and projects repository! This repository is designed to store and organize various academic courses and related projects.
 
 ## Table of contents
