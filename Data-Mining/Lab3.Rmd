@@ -1,0 +1,61 @@
+---
+title: "zaj4"
+output: html_document
+date: "2024-04-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(corrplot)
+library(liver)
+data("cereal")
+head(cereal)
+```
+
+
+```{r}
+train<-cereal[-c(5, 15, 25, 35, 55),]
+test<-cereal[c(5, 15, 25, 35, 55),]
+
+cereal2 = subset(cereal, select = -c(name, type, manuf) )
+corrplot(cor(cereal2), method = 'color')
+```
+
+```{r}
+#type, calories, 
+#m1<-lm(rating~calories, train)
+#m1<-lm(rating~fiber, train)
+m1 <- lm(rating ~ calories + protein + fat + fiber + sugars, train)
+summary(m1)
+```
+
+
+```{r}
+plot(train$rating, type="l", col="red")
+lines(m1$fitted.values, type="l", col="blue")
+```
+
+```{r}
+
+aic_m1<-AIC(m1)
+bic_m1<-BIC(m1)
+
+hist(m1$residuals)
+acf(m1$residuals)
+pacf(m1$residuals)
+plot(m1$residuals~m1$fitted.values)
+```
+
+```{r}
+library(MLmetrics)
+
+pred_m1<-predict(m1, newdata = test)
+mape_m1<-MAPE(pred_m1, test$rating)
+pred_m1
+mape_m1
+```

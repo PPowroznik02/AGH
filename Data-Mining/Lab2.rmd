@@ -1,0 +1,219 @@
+---
+title: "DataMining3"
+author: "Jakub Sumara, Bartosz Skóra, Martyna Durda, Piotr Powroźnik, Bartosz Baran"
+date: "2024-03-23"
+output:
+  pdf_document: default
+  html_document: default
+---
+<h1>Preprocessing danych</h1>
+Celem analizy jest opisanie wpływu preprocessingu na dane z oczyszczalni ścieków w Sandomierzu oraz dla danych "cars". Dane te zawierają błędne warości takie jak: NA, wartości ujemne, mocno odstające od reszty czy też sprzeczne z logiką.
+<h2>Zadanie 1</h2>
+a)
+```{r setup, warning=FALSE, message=FALSE} 
+library(dbplyr)
+library(tidyverse)
+library(zoo)
+library(caret)
+wastewater<-read.table("wastewater.txt", header=TRUE, sep="\t", dec=".")
+```
+b)
+```{r}
+str(wastewater)
+```
+Dane wczytały się jako num, kolumna z datą nie miała nazwy, więc przypisano jej nazwę "X". Wyróżnia się jedna wartość ujemna, jedna wartość dodatnia znacząco odstająca od reszty oraz NA <br>
+c) <br>
+Dane dotyczą dopływu ścieków do oczyszczalni w Sandomierzu. Przedstawiają one miesięczną średnią dopływów do oczyszczalni dla lat 2002-2007.<br>
+Z danych udostępnionych przez gov.pl wynika, że średnia przepustowość oczyszczalni to 7,500 m3/d a maksymalna to 10,000 m3/d <br>
+d)
+```{r}
+boxplot(wastewater$Sandomierz, main="wastewater$Sandomierz")
+```
+<br>Z boxplotu można wyczytać, że mediana wynosi ok. 3. Widać również kilka wartości odstających.
+```{r}
+plot(wastewater$Sandomierz, type="l")
+```
+<br>Na plocie widać, jedna z pierwszych wartości nie istnieje, a 3 z nich odstaja od reszty.
+```{r}
+hist(wastewater$Sandomierz, breaks=8)
+```
+<br>Na histogramie ponownie widać, że mamy 3 wartości odstające. <br>
+e)
+```{r}
+wastewater<-wastewater%>%mutate(a_Sandomierz = ifelse(Sandomierz > 0 & Sandomierz < 10, Sandomierz, NA))
+```
+Usunięto wartości ujemne oraz większe od 10 (Maksylana przepustowość oczyszczalni)<br>
+g)<br>
+```{r}
+boxplot(wastewater$a_Sandomierz, main="wastewater$a_Sandomierz")
+plot(wastewater$a_Sandomierz, type="l")
+hist(wastewater$a_Sandomierz, breaks=8)
+```
+<br>Jak widać, wszystkie wartości odstające zostały usunięte i wykresy lepiej przedstawiają poprawne dane.<br>
+<h2>Zadanie 2</h2>
+```{r}
+wastewater <- wastewater %>%
+  mutate(a_Sandomierz_filled = na.approx(a_Sandomierz))
+```
+Do uzupełnienia wartości NA użyto funkcji na.approx, która dla każdej wartości brakującej szacuje wartość na podstawie wartości bezpośrednio poprzedzającej i następującej po niej. W przypadku danych czasowych, funkcja ta uwzględnia kolejność danych, interpolując wartości na podstawie czasu.
+
+
+```{r}
+library(EnvStats)
+library(caret)
+
+#a)
+sand_std <- scale(wastewater$a_Sandomierz_filled)
+hist(sand_std)
+
+#b)
+min_max_transformation <- function(x){
+  return((x-min(x)) / (max(x) - min(x)))
+}
+
+sand_min <- min_max_transformation(wastewater$a_Sandomierz_filled)
+hist(sand_min)
+
+#c)
+sand_box <- boxcox(wastewater$a_Sandomierz_filled)
+sand_box2 <- preProcess(wastewater, method = "BoxCox")
+hist(sand_box$data)
+
+#d)
+sand_log <- log(wastewater$a_Sandomierz_filled)
+hist(sand_log)
+
+
+#e)
+sand_lag <- diff(wastewater$a_Sandomierz_filled, lag = 1)
+hist(sand_lag)
+
+
+length(sand_lag) <- length(sand_log)
+sand_trans <- data.frame(sand_std, sand_min, sand_box$data, sand_log, sand_lag) 
+summary(sand_trans)
+
+```
+
+<h2>Zadanie 3</h2><br>
+Dane cars zawierają informacje na temat różnych samochodów, w tym ich parametrów technicznych i pochodzenia. Niektóre wartości są niepełne lub nieprawidłowe, dlatego należy przeprowadzić preprocessing danych.
+```{r}
+cars<-read.table("cars.txt", header=TRUE, sep=",")
+str(cars)
+```
+Dane cubicinches są wartościami tekstowymi, więc należy zmienić je na intiger
+```{r}
+cars$cubicinches <- as.integer(cars$cubicinches)
+```
+Niektóre wartości zawierały litery np. a70, zostały one zamienione na NA, gdyż nie wiadomo czy chodziło o pojemność silnika równą 70 czy inną.<br>
+```{r}
+summary(cars)
+boxplot(cars$mpg, main="cars$mpg")
+boxplot(cars$cylinders, main="cars$cylinders")
+boxplot(cars$cubicinches, main="cars$cubicinches")
+boxplot(cars$hp, main="cars$hp")
+boxplot(cars$weightlbs, main="cars$weightlbs")
+boxplot(cars$time.to.60, main="cars$time.to.60")
+boxplot(cars$year, main="cars$year")
+```
+<br>Większość danych zawiera jakieś wartości odstające, ujemne bądź równe 0.
+```{r}
+cars$mpg[which(cars$mpg > 1000)] <- NA
+cars$mpg[which(cars$mpg <5)] <- NA
+        
+cars$cylinders[which(cars$cylinders > 40)] <- NA
+cars$cylinders[which(cars$cylinders == 0)] <- NA
+
+cars$cubicinches <- as.integer(cars$cubicinches)
+
+cars$hp[which(cars$hp > 800)] <- NA
+cars$hp[which(cars$hp < 30)] <- NA
+
+cars$weightlbs[which(cars$weightlbs > 10000)] <- NA
+
+cars$time.to.60[which(cars$time.to.60 > 21)] <- NA
+cars$time.to.60[which(cars$time.to.60 < 10)] <- NA
+
+cars$brand[which(cars$brand == " USA.")] <- " US."
+cars$brand[which(cars$brand == " Europan.")] <- " Europe."
+cars$brand[which(cars$brand == " Japane.")] <- " Japan."
+```
+Zamieniono wartości odstające i mniejsze lub równe 0 na NA
+```{r, message=FALSE}
+cars_Japan <- cars[cars$brand==" Japan."|cars$brand==" Japane.", ]
+cars_US <-  cars[cars$brand==" US."|cars$brand==" USA.", ]
+cars_Europe <-  cars[cars$brand==" Europe."|cars$brand==" Europan.", ]
+
+cars_Japan$mpg <- na.approx(cars_Japan$mpg)
+cars_Japan$cylinders <- na.approx(cars_Japan$cylinders)
+cars_Japan$cubicinches <- na.approx(cars_Japan$cubicinches)
+
+
+cars_Europe$mpg <- na.approx(cars_Europe$mpg)
+cars_Europe$time.to.60 <- na.approx(cars_Europe$time.to.60)
+
+US_cylinders_mean<-round(mean(na.omit(cars_US$cylinders)))
+cars_US$mpg <- na.approx(cars_US$mpg)
+cars_US$cylinders[162] <- US_cylinders_mean
+cars_US$hp <- na.approx(cars_US$hp)
+cars_US$year <- na.approx(cars_US$year)
+cars_US$weightlbs <- na.approx(cars_US$weightlbs)
+cars_US$time.to.60 <- na.approx(cars_US$time.to.60)
+cars_US$cubicinches <- na.approx(cars_US$cubicinches)
+```
+Dane rozdzielono na oddzielne tabele ze względu na pochodzenie auta. Następnie wartości NA przy użyciu funkcji na.approx zamieniono na średnią z wartości poprzedzającej i następującej.
+```{r}
+cars_new <- full_join(cars_US,cars_Europe)
+cars_new <- full_join(cars_new,cars_Japan)
+```
+Rozdzielone i uzupełnione tabele ponownie połączono w jedną, dla której można już analizować wykresy.<br>
+```{r}
+summary(cars_new)
+boxplot(cars_new$mpg, main="cars_new$mpg")
+boxplot(cars_new$cylinders, main="cars_new$cylinders")
+boxplot(cars_new$cubicinches, main="cars_new$cubicinches")
+boxplot(cars_new$hp, main="cars_new$hp")
+boxplot(cars_new$weightlbs, main="cars_new$weightlbs")
+boxplot(cars_new$time.to.60, main="cars_new$time.to.60")
+boxplot(cars_new$year, main="cars_new$year")
+```
+<br>Usunięcie wszystkich wartości odstających polepszyło jakość wykresów.\
+<br>Z wykresów można odczytać następujące informacje:\
+<br>    -najbardziej ekonomiczny szmochód na 1 galonie może przejechać ponad 45 mil, najamniej ekonomiczny tylko 10 mil\
+<br>    -mediana pojenosci silnika wynosi 156 in3\
+<br>    -najszybszy samochód rozpędzi się do 60 mph w ciągu 10 sekund, w przypadku najwonijeszego czas ten jest ponad 2 dłuższy\
+<br>    -mediana czasu potrzebnego od rozpędzenia się do 60 mph to 16 sekund
+
+```{r}
+ggplot(data = cars_new, aes(x = weightlbs, y = mpg)) +
+  geom_point() +
+  geom_smooth(method='lm') 
+
+```
+<br>Na wykresie można zaobserwować, że liczba mil które można prejechać spada wraz ze wzrostem masy pojazdu.
+
+```{r}
+boxplot(cars_new$mpg~cars_new$brand,data=cars_new)
+```
+<br>Na boxplocie widać że auta wyprodukowane w Japoni są najbardziej wydajne, natomiast auta pochodzące z USA zużywają najwięcej paliwa.
+
+```{r}
+ggplot(data = cars_new, aes(x = cylinders, fill = brand)) +
+  geom_bar()
+```
+<br>Liczba samochodów czterocylindrowych jest porównywalna dla wszystkich regionów, samochody sześciocylindrowe produkowane były głównie w USA, natomiast ośmiocylindrowe wyłącznie w USA.
+
+
+
+```{r}
+ggplot(data = cars_new) +
+    geom_smooth(mapping = aes(x = year, y = weightlbs, color = brand)) +
+  scale_x_continuous(breaks = pretty(cars_new$year, n = 10)) 
+```
+<br>Na wykresie można zauważyć że waga samochodów w USA po 1975 roku zaczeła spadać, w Europie po roku 1979, natomiast w Japoni waga utrzymymuje utrzymuje się na podobnym poziomie. Najcięższe samochody wyprodukowane zostały w USA, gdzie ich największa waga osiągneła 5000 lbs. 
+```{r}
+ggplot(data = cars_new) +
+    geom_smooth(mapping = aes(x = year, y = mpg, color = brand)) +
+  scale_x_continuous(breaks = pretty(cars_new$year, n = 10)) 
+```
+<br>Z wykresu można odczytać że ilość mil którą można przejechać na jednym galonie paliwa rosła wraz z rokiem produkcji samochodu. W Europie w latach 1979-1983 proces ten zachodził najszybciej, natomiast w Japoni po roku 1981 można zauważyć spadek wydajności samochodów. W USA w całym okresie produkowane samochody były znacznie miniej wydajne niż w przypadku innych rejonów. 

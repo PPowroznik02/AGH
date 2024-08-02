@@ -11,6 +11,8 @@ AGH academic courses and projects repository! This repository is designed to sto
 - [Python](/Python)
 - [Operating Systems](/Operating-Systems)
 - [Bash](/Bash)
+- [Data Mining](/Data-Mining)
 - [Spatial Data Analysis](/Spatial-Data-Analysis)
 - [Electronic Measuring Techniques](/Electronic-Measuring-Techniques)
 - [Environmental Data Processing](/Environmental-Data-Processing)
+- [Environmental Modeling](/Environmental-Modeling)

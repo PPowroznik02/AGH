@@ -1,0 +1,84 @@
+---
+title: "Laby7"
+output: html_document
+date: "2024-04-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+library(fastDummies)
+```
+
+
+
+```{r cars}
+data("AirPassengers")
+str(AirPassengers)
+summary(AirPassengers)
+
+plot(AirPassengers)
+
+month <- rep(c(1:12), times=12)
+boxplot(AirPassengers~month)
+
+acf(AirPassengers) #autokorelacja
+pacf(AirPassengers) #autokorelacja czastkowa
+```
+
+```{r}
+passengers<- data.frame(year = as.integer(time(AirPassengers)), passengers = as.vector(AirPassengers))
+passengers$month<-rep(1:12,times=12)
+
+t1 = seq(1, length(AirPassengers), 1)
+t2 = t1*t1
+
+lag12 <- lag(AirPassengers, k = 12)
+
+dummy_cols(passengers$month)
+dummy <- dummy_cols(passengers, select_columns = c("month", "passengers"))
+
+passengers$jan <- as.double(dummy$month_1)
+passengers$feb <- as.double(dummy$month_2)
+passengers$mar <- as.double(dummy$month_3)
+passengers$apr <- as.double(dummy$month_4)
+passengers$may <- as.double(dummy$month_5)
+passengers$jun <- as.double(dummy$month_6)
+passengers$jul <- as.double(dummy$month_7)
+passengers$aug <- as.double(dummy$month_8)
+passengers$sep <- as.double(dummy$month_9)
+passengers$oct <- as.double(dummy$month_10)
+passengers$nov <- as.double(dummy$month_11)
+passengers$dec <- as.double(dummy$month_12)
+
+passengers <- as.data.frame(passengers)
+```
+```{r}
+m1<-lm(passengers$passengers~t1 + passengers$jul + passengers$aug + passengers$nov + passengers$feb)
+m2<-lm(passengers$passengers~t1 + passengers$jul + passengers$aug + passengers$nov + passengers$feb + lag12)
+summary(m1)
+summary(m2)
+```
+
+
+```{r}
+library(MASS)
+library(caret)
+data("Boston")
+
+library(corrplot)
+corrplot(cor(Boston), method = 'color')
+
+stand <-function(x) { (x -mean(x))/(sd(x)) }
+data("Boston")
+sets <- sample(1:nrow(Boston), 0.75 * nrow(Boston))
+train<-Boston[sets,]
+
+model_z_interakcjami <- lm(crim ~ rad + dis + medv, data = train)
+summary(model_z_interakcjami)
+
+
+```
